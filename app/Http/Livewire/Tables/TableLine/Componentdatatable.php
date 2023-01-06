@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Tables\MasterData;
+namespace App\Http\Livewire\Tables\TableLine;
 
 use Mediconesystems\LivewireDatatables\Http\Livewire\LivewireDatatable;
 use Mediconesystems\LivewireDatatables\Column;
@@ -10,7 +10,7 @@ use Mediconesystems\LivewireDatatables\NumberColumn;
 use Mediconesystems\LivewireDatatables\BooleanColumn;
 use App\Models\TableLine;
 
-class Tablelinedatatable extends LivewireDatatable
+class Componentdatatable extends LivewireDatatable
 {
     public $table_id,$table_column,$table_option;
     public $active;
@@ -21,7 +21,10 @@ class Tablelinedatatable extends LivewireDatatable
     public function builder()
     {
         //
-        $stmt = TableLine::query()->where('table_id',$this->table_id);
+        $stmt = TableLine::query();
+        // ->where('table_id',$this->table_id);
+
+        // dd($stmt->get());
         if($this->active == '1'){
             $stmt->where('table_lines.logic_1','=','1');
         }else if($this->active == '0'){
@@ -51,9 +54,9 @@ class Tablelinedatatable extends LivewireDatatable
                     $retrunColumn[] = Column::callback($key,function($key){
                         $res = '';
                         if($key == 1){
-                            $res = '<span class="px-2 text-white rounded-md box-decoration-clone bg-gradient-to-r from-green-400 to-green-400">ใช้งาน</span>';
+                            $res = '<button class="px-2 py-1 text-sm text-blue-500 border border-blue-400 rounded-md"> active</button>';
                         }else{
-                            $res = '<span class="px-2 text-white rounded-md box-decoration-clone bg-gradient-to-r from-red-600 to-red-600">ไม่ใช้งาน</span>';
+                            $res = '<button class="px-2 py-1 text-sm text-red-500 border border-red-400 rounded-md"> inactive </button>';
                         }
                         return $res;
                     })
