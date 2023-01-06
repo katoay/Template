@@ -17,7 +17,7 @@
                                 class="relative inline-block w-5 h-5 transition duration-200 ease-in-out transform rounded-full shadow pointer-events-none ring-0">
                                 <span x-bind:class="darkMode ? 'opacity-0 ease-out duration-100' : 'opacity-100 ease-in duration-200'"
                                     class="absolute inset-0 flex items-center justify-center w-full h-full transition-opacity"
-                                    aria-hidden="true">
+                                    aria-hidden="true ">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 text-gray-400" viewBox="0 0 20 20"
                                         fill="currentColor">
                                         <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
