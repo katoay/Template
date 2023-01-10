@@ -66,8 +66,8 @@ class Tableline extends Component
                 'inputType' => 'text',  //text, number, date,textarea
             ),
             'logic_1' =>  array(
-                'label' => 'สถานะ',
-                'show' => 'true', //true or false
+                'label' => 'logic_1',
+                'show' => 'false', //true or false
                 'require' => 'false',  //true or false
                 'inputType' => 'boolean',  //text, number, date,textarea
             ),
@@ -85,7 +85,7 @@ class Tableline extends Component
         return view('livewire.master-data.tableline.tableline');
     }
 
-    public function Create()
+    public function create()
     {
         $this->isForm = true;
         $this->resetValidation();
@@ -95,7 +95,7 @@ class Tableline extends Component
     }
     protected $messages = [
         'metadata.table_desc.required' => 'กรุณาระบุ',
-        // 'metadata.long_text_1.required' => 'กรุณาระบุ',
+        'metadata.long_text_1.required' => 'กรุณาระบุ',
     ];
 
     protected $rules = [
@@ -111,28 +111,28 @@ class Tableline extends Component
             $this->metadata['table_code'] = '{{$self}}';
         }
         try {
-            $stmt = TableLine::updateOrCreate([
+            $stmt = TableLineM::updateOrCreate([
                 'table_line_id' => $this->editid,
                 'table_id' => $this->table_id,
             ],$this->metadata);
             $this->edit($stmt->table_line_id);
-            $this->dispatchBrowserEvent('toast', 
-            [
-                'toast_type' => 'success',
-                'toast_msg' => 'บันทึกข้อมูลสำเร็จ',
-            ]);
+            session()->flash('success', 'Successfully updated.');
+            // $this->dispatchBrowserEvent('toast', 
+            // [
+            //     'toast_type' => 'success',
+            //     'toast_msg' => 'บันทึกข้อมูลสำเร็จ',
+            // ]);
         } catch (\Throwable $th) {
-            Debugbar::error($th);
-            $this->dispatchBrowserEvent('toast', 
-            [
-                'toast_type' => 'error',
-                'toast_msg' => 'พบข้อผิดพลาด ไม่สามารถบันทึกข้อมูลได้',
-            ]);
+            session()->flash('error', 'Failed.');
+            // $this->dispatchBrowserEvent('toast', 
+            // [
+            //     'toast_type' => 'error',
+            //     'toast_msg' => 'พบข้อผิดพลาด ไม่สามารถบันทึกข้อมูลได้',
+            // ]);
         }
-
     }
 
-    public function Back()
+    public function back()
     {
         $this->isForm = false;
     }
@@ -143,7 +143,7 @@ class Tableline extends Component
         $this->resetValidation();
         $this->editid = $id;
         $column = $this->column;
-        $data = TableLine::find($id);
+        $data = TableLineM::find($id);
         foreach ($column as $key => $item):
             if($item['show'] == 'true')
             {
@@ -165,7 +165,7 @@ class Tableline extends Component
 
     public function delete_modal_confirm()
     {
-        $stmt = TableLine::find($this->deleteid);
+        $stmt = TableLineM::find($this->deleteid);
         try {
             //code...
             $stmt->delete();
@@ -176,8 +176,6 @@ class Tableline extends Component
                     'toast_msg' => 'ลบข้อมูลสำเร็จ',
                 ]);
         } catch (\Throwable $th) {
-            //throw $th;
-            Debugbar::error($th);
             $this->dispatchBrowserEvent('toast', 
             [
                 'toast_type' => 'error',

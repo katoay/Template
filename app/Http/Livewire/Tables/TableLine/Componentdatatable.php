@@ -69,7 +69,6 @@ class Componentdatatable extends LivewireDatatable
                     $retrunColumn[] = Column::callback([$key],function($key){
                         $res = '';
                         foreach ($this->table_option as $key_option => $item_option) {
-                            Debugbar::info($item_option);
                             if($key == $key_option){
                                 $res = $item_option;
                             }
