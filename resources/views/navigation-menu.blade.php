@@ -43,8 +43,11 @@
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('announcement') }}" :active="request()->routeIs('announcement')">
+                        {{ __('ข่าวสารและประกาศ') }}
+                    </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('tableline') }}" :active="request()->routeIs('tableline')">
-                        {{ __('test') }}
+                        {{ __('Table Line') }}
                     </x-jet-nav-link>
                 </div>
             </div>

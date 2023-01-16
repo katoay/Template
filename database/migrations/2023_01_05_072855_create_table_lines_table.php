@@ -17,12 +17,12 @@ return new class extends Migration
             $table->id('table_line_id');
             $table->string('table_id', 100)->nullable();
             $table->string('table_code', 100)->nullable();
-            $table->text('table_desc')->nullable();
+            $table->longtext('table_desc')->nullable();
             $table->unsignedBigInteger('table_parent_id')->nullable();
-            $table->text('long_text_1')->nullable();
-            $table->text('long_text_2')->nullable();
-            $table->text('long_text_3')->nullable();
-            $table->text('long_text_4')->nullable();
+            $table->longtext('long_text_1')->nullable();
+            $table->longtext('long_text_2')->nullable();
+            $table->longtext('long_text_3')->nullable();
+            $table->longtext('long_text_4')->nullable();
             $table->text('logic_1')->nullable();
             $table->text('logic_2')->nullable();
             $table->text('logic_3')->nullable();

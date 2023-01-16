@@ -11,6 +11,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                                 </svg>
                             </div>
+                            <div class="text-yellow-400 hover:bg-gray-200 bg-gray-50"></div>
                             <input wire:model.debounce.500ms="search" class="block w-full py-3 pl-10 text-sm leading-4 border-gray-300 rounded-md shadow-sm dark:bg-neutral-700 dark:text-neutral-300 dark:border-neutral-700 focus:border-blue-300 focus:ring-0 focus:outline-none" placeholder="{{__('Search ')}} 
                                 {{-- {{ $this->searchableColumns()->map->label->join(', ') }} --}}
                                 "type="text" />
@@ -236,6 +237,5 @@
     @endif
 
     @includeIf($afterTableSlot)
-
     <span class="hidden text-sm leading-5 text-left text-center text-right text-gray-900 bg-gray-100 bg-yellow-100 bg-gray-50"></span>
 </div>

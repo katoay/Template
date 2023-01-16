@@ -95,9 +95,9 @@ return [
 
     'default_classes' => [
         'row' => [
-            'even' => 'divide-x divide-gray-100 text-sm text-gray-900 bg-gray-100',
-            'odd' => 'divide-x divide-gray-100 text-sm text-gray-900 bg-gray-50',
-            'selected' => 'divide-x divide-gray-100 text-sm text-gray-900 bg-yellow-100',
+            'even' => 'text-xs text-gray-900 divide-x divide-gray-100 hover:bg-gray-200 bg-gray-50',
+            'odd' => 'text-xs text-gray-900 bg-gray-100 divide-x divide-gray-100 hover:bg-gray-200',
+            'selected' => 'text-xs text-gray-900 bg-yellow-200 divide-x divide-gray-100',
         ],
         'cell' => 'whitespace-no-wrap text-sm text-gray-900 px-6 py-2',
     ],
