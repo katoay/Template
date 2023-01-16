@@ -66,4 +66,15 @@ class Announcementdatatable extends LivewireDatatable
             ->label('จัดการ')
         ];
     }
+
+    public function table_edit($id)
+    {
+        $this->emit('edit', $id);
+    }
+
+    public function table_delete($id)
+    {
+        $this->delete_id = $id;
+        $this->emit('openDeleteModal', $this->delete_id);
+    }
 }

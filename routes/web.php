@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\MasterData\Tableline;
 use App\Http\Livewire\MasterData\Announcement;
+use App\Http\Livewire\Dashboard\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,7 @@ use App\Http\Livewire\MasterData\Announcement;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/dashboard', Dashboard::class)->name('dashboard');
 
 Route::middleware([
     'auth:sanctum',
@@ -26,7 +28,7 @@ Route::middleware([
 ])->group(function () {
     Route::get('tableline', Tableline::class)->middleware('auth')->name('tableline');
     Route::get('announcement', Announcement::class)->middleware('auth')->name('announcement');
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    // Route::get('/dashboard', function () {
+    //     return view('dashboard');
+    // })->name('dashboard');
 });
