@@ -20,16 +20,20 @@ class Announcement extends Component
     use AuthorizesRequests, WithFileUploads;
     public $isOpen = 0;
     public $isDelete = 0;
+    public $deleteid;
     public $isForm,$form_style,$isCreate,
     $isEdit,$showtable,$header_text,$delete_id,$audits;
 
-    // Image
+    // Announce
     public $announcement_id, $object_type, $announcement_header, $announcement_desc,
     $flag, $active;
 
     // Image
     public $image_file, $image_file_url;
     public $inputFile = [], $attachfile = [], $file_id, $condit_2;
+
+    // Rule
+    public $rules, $messages ;
 
     public $editid,$action;
     protected $listeners = ['edit','openDeleteModal'];
@@ -104,6 +108,7 @@ class Announcement extends Component
         $this->isForm = false;
         $this->resetInputFields();
         $this->resetValidation();
+        $this->emit('builder');
     }
     
     private function resetInputFields()
@@ -181,6 +186,7 @@ class Announcement extends Component
             }
             DB::commit();
             $this->edit($id);
+            session()->flash('success', 'Successfully updated.');
             $this->dispatchBrowserEvent('toast', 
             [
                 'toast_type' => 'success',
@@ -209,10 +215,10 @@ class Announcement extends Component
         $this->active = $stmt->active;
         $this->audits = $stmt->audits;
 
-        $attc = $stmt->attachment()->where('object_type', 'ANNOUNCEMENT')->first();
-        if ($attc) {
-            $this->image_file_url = $attc->file_name;
-        }
+        // $attc = $stmt->attachment()->where('object_type', 'ANNOUNCEMENT')->first();
+        // if ($attc) {
+        //     $this->image_file_url = $attc->file_name;
+        // }
         $this->loadData();
         $this->isEdit();
     }

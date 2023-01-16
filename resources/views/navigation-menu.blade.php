@@ -5,9 +5,9 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex items-center shrink-0">
-                    <a href="{{ route('dashboard') }}">
+                    {{-- <a href="{{ route('dashboard') }}"> --}}
                         <x-jet-application-mark class="block w-auto h-9" />
-                    </a>
+                    {{-- </a> --}}
                     <div class="ml-2 ">
                         <button type="button" x-bind:class="darkMode ? 'bg-neutral-500' : 'bg-gray-200'" x-on:click="darkMode = !darkMode"
                             class="relative inline-flex flex-shrink-0 h-6 transition-colors duration-200 ease-in-out border-2 border-transparent rounded-full cursor-pointer w-11 focus:outline-none focus:ring-0"
