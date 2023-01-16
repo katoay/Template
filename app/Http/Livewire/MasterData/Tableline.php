@@ -116,12 +116,12 @@ class Tableline extends Component
                 'table_id' => $this->table_id,
             ],$this->metadata);
             $this->edit($stmt->table_line_id);
-            session()->flash('success', 'Successfully updated.');
-            // $this->dispatchBrowserEvent('toast', 
-            // [
-            //     'toast_type' => 'success',
-            //     'toast_msg' => 'บันทึกข้อมูลสำเร็จ',
-            // ]);
+            // session()->flash('success', 'Successfully updated.');
+            $this->dispatchBrowserEvent('toastr', 
+            [
+                'toast_type' => 'success',
+                'toast_msg' => 'บันทึกข้อมูลสำเร็จ',
+            ]);
         } catch (\Throwable $th) {
             session()->flash('error', 'Failed.');
             // $this->dispatchBrowserEvent('toast', 

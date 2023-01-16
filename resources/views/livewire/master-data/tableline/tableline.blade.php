@@ -9,7 +9,7 @@
             <div>
                 {{-- Center --}}
             </div>
-            <div class="flex-none">
+            <div>
                 {{-- Right --}}
                 {{-- Action Button --}}
                     @if(!$isForm)
@@ -21,7 +21,7 @@
             </div>
         </div>
         <x-alert-box />
-
+        
         <div x-data="{ open: false }">
             <div x-show="!$wire.isForm" style="@if($isForm) display: none; @endif">
                 {{-- Datatables --}}
@@ -42,6 +42,5 @@
 </div>
 @push('scripts')
     <script>
-        
     </script>
 @endpush
